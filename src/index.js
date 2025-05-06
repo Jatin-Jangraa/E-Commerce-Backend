@@ -43,6 +43,6 @@ app.use("/payment", paymentroute);
 
 app.use ("/dashboard",dashroute)
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT||4000, () => {
   console.log(`Express is running on Port ${process.env.PORT}`);
 });
