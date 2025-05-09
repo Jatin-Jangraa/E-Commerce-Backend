@@ -44,14 +44,14 @@ export const latestproduct = async (req, res) => {
 export const categoryproduct = async (req, res) => {
 
   let cateproduct;
-  // if (mycache.has("cateproduct"))
-  //   cateproduct = JSON.parse(mycache.get("cateproduct"))
-  // else {
+  if (mycache.has("cateproduct"))
+    cateproduct = JSON.parse(mycache.get("cateproduct"))
+  else {
 
  cateproduct = await Product.distinct("category")
 
  mycache.set("cateproduct",JSON.stringify(cateproduct))
-  // }
+  }
   res.json(cateproduct)
 
 }
@@ -60,12 +60,12 @@ export const categoryproduct = async (req, res) => {
 export const adminproduct = async (req, res) => {
 
   let allproduct;
-  // if (mycache.has("allproduct"))
-    // allproduct = JSON.parse(mycache.get("allproduct"))
-  // else {
+  if (mycache.has("allproduct"))
+    allproduct = JSON.parse(mycache.get("allproduct"))
+  else {
     allproduct = await Product.find({})
-    // mycache.set("allproduct",JSON.stringify(allproduct))
-  // }
+    mycache.set("allproduct",JSON.stringify(allproduct))
+  }
 
   
 
